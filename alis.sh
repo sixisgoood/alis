@@ -825,13 +825,12 @@ function mkinitcpio_configuration() {
     if [ "$FILE_SYSTEM_TYPE" == "reiserfs" ]; then
         pacman_install "reiserfsprogs"
     fi
-
+    if [ "$LVM" == "true" ]; then
+        HOOKS=$(echo $HOOKS | sed 's/!lvm2/lvm2/')
+    fi
     if [ "$BOOTLOADER" == "systemd" ]; then
         HOOKS=$(echo $HOOKS | sed 's/!systemd/systemd/')
         HOOKS=$(echo $HOOKS | sed 's/!sd-vconsole/sd-vconsole/')
-        if [ "$LVM" == "true" ]; then
-            HOOKS=$(echo $HOOKS | sed 's/!sd-lvm2/sd-lvm2/')
-        fi
         if [ -n "$LUKS_PASSWORD" ]; then
             HOOKS=$(echo $HOOKS | sed 's/!sd-encrypt/sd-encrypt/')
         fi
@@ -840,9 +839,6 @@ function mkinitcpio_configuration() {
         HOOKS=$(echo $HOOKS | sed 's/!usr/usr/')
         HOOKS=$(echo $HOOKS | sed 's/!keymap/keymap/')
         HOOKS=$(echo $HOOKS | sed 's/!consolefont/consolefont/')
-        if [ "$LVM" == "true" ]; then
-            HOOKS=$(echo $HOOKS | sed 's/!lvm2/lvm2/')
-        fi
         if [ -n "$LUKS_PASSWORD" ]; then
             HOOKS=$(echo $HOOKS | sed 's/!encrypt/encrypt/')
         fi
