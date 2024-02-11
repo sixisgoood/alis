@@ -98,7 +98,7 @@ Internet connection is required, with wireless WIFI connection see <a href="http
 #                         # Start the system with latest Arch Linux installation media
 # loadkeys [keymap]       # Load keyboard keymap, eg. loadkeys es, loadkeys us, loadkeys de
 # iwctl --passphrase "[WIFI_KEY]" station [WIFI_INTERFACE] connect "[WIFI_ESSID]"          # (Optional) Connect to WIFI network. _ip link show_ to know WIFI_INTERFACE.
-# curl -sL https://raw.githubusercontent.com/picodotdev/alis/master/download.sh | bash     # Download alis scripts
+# curl -sL https://raw.githubusercontent.com/sixisgoood/alis/master/download.sh | bash     # Download alis scripts
 # # curl -sL https://bit.ly/2F3CATp | bash                                                 # Alternative download URL with URL shortener
 # ./alis-asciinema.sh     # (Optional) Start asciinema video recording
 # vim alis.conf           # Edit configuration and change variables values with your preferences (system configuration)
